@@ -18,13 +18,16 @@ import java.util.Optional;
 public class WheelClientConfig {
 
     private static final String FILENAME = "hex-spell-wheel.txt";
-    private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve(FILENAME);
+    private static Path CONFIG_PATH;
+
 
     private static WheelClientConfig INSTANCE;
 
     private final Map<String, Item> icons;
 
-    public static void init() {
+    public static void init(Path config) {
+        CONFIG_PATH = config.resolve(FILENAME);
+
         ClientLifecycleEvent.CLIENT_STOPPING.register(instance -> {
             if (INSTANCE != null) INSTANCE.write();
         });
