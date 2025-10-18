@@ -25,6 +25,9 @@
     ],
     "client": [
       "dev.drtheo.spellwheel.fabric.client.SpellWheelFabricClient"
+    ],
+    "modmenu": [
+      "dev.drtheo.spellwheel.fabric.client.SpellWheelMenu"
     ]
   },
   "mixins": [

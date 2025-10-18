@@ -3,7 +3,7 @@ package dev.drtheo.spellwheel.client;
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
-import dev.drtheo.spellwheel.client.util.SpellbookUtil;
+import dev.drtheo.spellwheel.client.ui.WheelScreen;
 import net.minecraft.client.KeyMapping;
 
 public class WheelKeybinds {
@@ -22,7 +22,7 @@ public class WheelKeybinds {
 
             if (!OPEN_SPELL_WHEEL.consumeClick()) return;
 
-            SpellbookUtil.createWheel(minecraft).ifPresent(minecraft::setScreen);
+            WheelScreen.tryCreate(minecraft).ifPresent(minecraft::setScreen);
         });
     }
 }

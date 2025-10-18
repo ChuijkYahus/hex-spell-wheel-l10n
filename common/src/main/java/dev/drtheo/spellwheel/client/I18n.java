@@ -48,4 +48,23 @@ public class I18n {
     public static MutableComponent notArtifact(Component name) {
         return Component.translatable("text." + SpellWheel.MOD_ID + ".not_artifact", name).withStyle(ChatFormatting.RED);
     }
+
+    public static class Config {
+
+        public static MutableComponent title() {
+            return Component.translatable("config." + SpellWheel.MOD_ID + ".title");
+        }
+
+        public static MutableComponent category() {
+            return Component.translatable("config." + SpellWheel.MOD_ID + ".category");
+        }
+
+        public static MutableComponent entry(String path) {
+            return Component.translatable("config." + SpellWheel.MOD_ID + "." + path);
+        }
+
+        public static MutableComponent entry(String category, String path) {
+            return Component.translatable("config." + SpellWheel.MOD_ID + "." + category + "." + path);
+        }
+    }
 }

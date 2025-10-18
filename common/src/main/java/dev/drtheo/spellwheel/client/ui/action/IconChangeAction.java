@@ -1,7 +1,7 @@
 package dev.drtheo.spellwheel.client.ui.action;
 
 import dev.drtheo.spellwheel.client.I18n;
-import dev.drtheo.spellwheel.client.config.WheelClientConfig;
+import dev.drtheo.spellwheel.client.config.WheelIconsClientConfig;
 import dev.drtheo.spellwheel.client.ui.Widget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -35,7 +35,7 @@ public class IconChangeAction implements Action {
             if (stack.isEmpty())
                 stack = new ItemStack(defIcon);
 
-            WheelClientConfig.get().setIcon(name, stack.getItem());
+            WheelIconsClientConfig.get().setIcon(name, stack.getItem());
             widget.setPreview(stack);
 
             widget.setHoverColor(Widget.HOVER_COLOR);

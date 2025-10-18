@@ -1,6 +1,6 @@
 package dev.drtheo.spellwheel.fabric.client;
 
-import dev.drtheo.spellwheel.SpellWheelClient;
+import dev.drtheo.spellwheel.client.SpellWheelClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 

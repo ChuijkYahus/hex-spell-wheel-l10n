@@ -5,14 +5,16 @@ import org.jetbrains.annotations.NotNull;
 
 public enum WidgetSlot implements StringRepresentable {
 
-    TOP_LEFT(-49, -49, -8, -8),
-    TOP(-15, -53, 0, -8),
-    TOP_RIGHT(20, -49, 8, -8),
-    LEFT(-53, -15, -8, 0),
-    RIGHT(24, -15, 8, 0),
-    BOTTOM_LEFT(-49, 21, -8, 8),
-    BOTTOM(-15, 25, 0, 8),
-    BOTTOM_RIGHT(21, 22, 8, 8);
+    TOP_LEFT(-21-32, -21-32, -8, -8),
+    TOP(-32/2, -21-32-5, 0, -8),
+    TOP_RIGHT(21, -21-32, 8, -8),
+
+    LEFT(-21-32-5, -32/2, -8, 0),
+    RIGHT(21+5, -32/2, 8, 0),
+
+    BOTTOM_LEFT(-21-32, 21, -8, 8),
+    BOTTOM(-32/2, 21+5, 0, 8),
+    BOTTOM_RIGHT(21, 21, 8, 8);
 
     public static final WidgetSlot[] VALUES = WidgetSlot.values();
 
@@ -34,6 +36,14 @@ public enum WidgetSlot implements StringRepresentable {
 
     public int getY(int height) {
         return height / 2 + y;
+    }
+
+    public int getHalfX(int width) {
+        return (width + x) / 2;
+    }
+
+    public int getHalfY(int height) {
+        return (height + y) / 2;
     }
 
     public int getXOffset() {

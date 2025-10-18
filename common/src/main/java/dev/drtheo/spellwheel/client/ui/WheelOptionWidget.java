@@ -13,16 +13,20 @@ public class WheelOptionWidget extends Button {
     public final Widget widget;
     private final int xOffset;
     private final int yOffset;
-    private float animationProgress = 0;
+    private float animationProgress;
+    private final boolean hasIcon;
 
-    protected WheelOptionWidget(int x, int y, Widget widget, int xOffset, int yOffset) {
-        super(x, y, 32, 32, Component.empty(), button -> { }, DEFAULT_NARRATION);
+    protected WheelOptionWidget(int x, int y, Widget widget, int xOffset, int yOffset, int size, float anim, boolean hasIcon) {
+        super(x+(32 - size)/2, y+(32 - size)/2, size, size, Component.empty(), button -> { }, DEFAULT_NARRATION);
 
         this.widget = widget;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
 
         this.setTooltip(Tooltip.create(widget.label()));
+
+        this.animationProgress = anim;
+        this.hasIcon = hasIcon;
     }
 
     @Override
@@ -30,7 +34,7 @@ public class WheelOptionWidget extends Button {
         PoseStack matrices = context.pose();
         matrices.pushPose();
 
-        if (animationProgress < 1) animationProgress += (float) 0.25 * delta;
+        //if (animationProgress < 1) animationProgress += (float) 0.25 * delta;
         matrices.translate(xOffset * animationProgress, yOffset * animationProgress, 0);
         isHovered = isMouseOver(mouseX, mouseY);
         renderButton(context);
@@ -55,10 +59,13 @@ public class WheelOptionWidget extends Button {
 
         int x = getX();
         int y = getY();
-        int contentX = x + 8;
-        int contentY = y + 8;
+        int contentX = x + width/4;
+        int contentY = y + height/4;
 
         context.fill(x, y, x + width, y + height, color);
+
+        if (!hasIcon) return;
+
         ItemStack preview = widget.preview();
 
         context.renderItem(preview, contentX, contentY);
@@ -86,7 +93,7 @@ public class WheelOptionWidget extends Button {
         Minecraft client = Minecraft.getInstance();
 
         if (client.screen instanceof WheelScreen wheelScreen)
-            wheelScreen.rightClick(widget);
+            wheelScreen.altClick(widget);
     }
 
     @Override
